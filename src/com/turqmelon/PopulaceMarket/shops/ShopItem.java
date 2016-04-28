@@ -46,6 +46,10 @@ public class ShopItem {
             double perc = town.getSalesTax() / 100.0;
             double newPrice = price - (price * perc);
             double townProfit = price - newPrice;
+            if (!Populace.getCurrency().isDecimalSupported()) {
+                newPrice = Math.round(newPrice);
+                townProfit = Math.round(townProfit);
+            }
             data.put(ShopCalculationType.TOWN_PROFIT, townProfit);
             data.put(ShopCalculationType.NEW_PRICE, newPrice);
         }
