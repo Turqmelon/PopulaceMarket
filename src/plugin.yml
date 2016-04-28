@@ -1,0 +1,6 @@
+name: PopulaceMarket
+description: Shop plugin for populace
+version: 1.0
+main: com.turqmelon.PopulaceMarket.PopulaceMarket
+author: Turqmelon
+depend: [Populace, MelonEco]

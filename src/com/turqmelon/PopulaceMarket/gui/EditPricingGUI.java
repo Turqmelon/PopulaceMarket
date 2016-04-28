@@ -111,7 +111,7 @@ public class EditPricingGUI extends ShopGUI {
                     amt = -100;
                     break;
                 case 52:
-                    amt = 1000;
+                    amt = -1000;
                     break;
             }
         }
@@ -145,38 +145,38 @@ public class EditPricingGUI extends ShopGUI {
         inv.setItem(0, new ItemBuilder(Material.ARROW).withCustomName("§e§l< BACK").build());
 
         if (getItem().getSellPrice() > 0){
-            inv.setItem(11, new ItemBuilder(Material.DIAMOND).withCustomName("§a§lSelling to customers for " + c.format(getItem().getSellPrice()) + "/ea §7(Shift Click to stop selling.)").build());
+            inv.setItem(11, new ItemBuilder(Material.DIAMOND).withCustomName("§a§lSelling for " + c.format(getItem().getSellPrice()) + "/ea").build());
         }
         else{
             inv.setItem(11, new ItemBuilder(Material.DIAMOND).withCustomName("§c§lYou're not selling this.").build());
         }
 
-        inv.setItem(19, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§a§l+" + c.format(1)).build());
-        inv.setItem(28, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§a§l+" + c.format(10)).build());
-        inv.setItem(37, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§a§l+" + c.format(100)).build());
-        inv.setItem(46, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§a§l+" + c.format(1000)).build());
+        inv.setItem(19, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§a§l+" + c.format(1) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(28, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§a§l+" + c.format(10) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(37, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§a§l+" + c.format(100) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(46, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§a§l+" + c.format(1000) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
 
-        inv.setItem(21, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§c§l-" + c.format(1)).build());
-        inv.setItem(30, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§c§l-" + c.format(10)).build());
-        inv.setItem(39, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§c§l-" + c.format(100)).build());
-        inv.setItem(48, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§c§l-" + c.format(1000)).build());
+        inv.setItem(21, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§c§l-" + c.format(1) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(30, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§c§l-" + c.format(10) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(39, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§c§l-" + c.format(100) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
+        inv.setItem(48, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§c§l-" + c.format(1000) + " §7§l(" + Populace.getCurrency().format(getItem().getSellPrice()) + ")").build());
 
         if (getItem().getBuyPrice() > 0){
-            inv.setItem(15, new ItemBuilder(Material.CHEST).withCustomName("§a§lBuying from customers for " + c.format(getItem().getBuyPrice()) + "/ea §7(Shift Click to stop buying.)").build());
+            inv.setItem(15, new ItemBuilder(Material.CHEST).withCustomName("§a§lBuying for " + c.format(getItem().getBuyPrice()) + "/ea").build());
         }
         else{
             inv.setItem(15, new ItemBuilder(Material.CHEST).withCustomName("§c§lYou're not buying this.").build());
         }
 
-        inv.setItem(23, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§a§l+" + c.format(1)).build());
-        inv.setItem(32, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§a§l+" + c.format(10)).build());
-        inv.setItem(41, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§a§l+" + c.format(100)).build());
-        inv.setItem(50, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§a§l+" + c.format(1000)).build());
+        inv.setItem(23, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§a§l+" + c.format(1) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(32, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§a§l+" + c.format(10) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(41, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§a§l+" + c.format(100) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(50, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§a§l+" + c.format(1000) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
 
-        inv.setItem(25, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§c§l-" + c.format(1)).build());
-        inv.setItem(34, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§c§l-" + c.format(10)).build());
-        inv.setItem(43, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§c§l-" + c.format(100)).build());
-        inv.setItem(52, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§c§l-" + c.format(1000)).build());
+        inv.setItem(25, new ItemBuilder(Material.GOLD_NUGGET).withCustomName("§c§l-" + c.format(1) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(34, new ItemBuilder(Material.GOLD_INGOT).withCustomName("§c§l-" + c.format(10) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(43, new ItemBuilder(Material.GOLD_BLOCK).withCustomName("§c§l-" + c.format(100) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
+        inv.setItem(52, new ItemBuilder(Material.GOLDEN_APPLE).withCustomName("§c§l-" + c.format(1000) + " §7§l(" + Populace.getCurrency().format(getItem().getBuyPrice()) + ")").build());
 
 
     }

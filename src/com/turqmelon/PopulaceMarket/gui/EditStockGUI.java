@@ -150,13 +150,13 @@ public class EditStockGUI extends ShopGUI {
         lore.add("§fStock can be retrieved by clicking");
         lore.add("§fhere with an empty cursor.");
         lore.add("§a");
-        lore.add("§aLeft Click§f to pull out §e1f.");
+        lore.add("§aLeft Click§f to pull out §e1§f.");
         int max = item.getType().getMaxStackSize();
         if (max > getItem().getStock()){
             max = getItem().getStock();
         }
         if (max > 1){
-            lore.add("§aRight Click§f to pull out §e" + max + "f.");
+            lore.add("§aRight Click§f to pull out §e" + max + "§f.");
         }
         Player player = Bukkit.getPlayer(getResident().getUuid());
         if (player != null && player.hasPermission(INFINITY_PRMISSION)){

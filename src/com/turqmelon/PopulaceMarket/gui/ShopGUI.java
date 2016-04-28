@@ -77,7 +77,8 @@ public class ShopGUI extends GUI {
             repopulate();
         }
         else if (raw == 3 && owner){
-            // TODO item creation
+            new NewItemGUI(getResident(), getShop()).open(player);
+            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
         }
         else if (raw == 5 && owner){
             if (getShop().destroy(false)){
@@ -118,6 +119,22 @@ public class ShopGUI extends GUI {
                                 player.playSound(player.getLocation(), Sound.CLICK ,1, 1);
                                 new EditStockGUI(getResident(), getShop(), item).open(player);
                             }
+                        } else {
+                            if (event.isRightClick() && item.getBuyPrice() > 0) {
+                                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                new SellItemGUI(getResident(), getShop(), item).open(player);
+                            } else if (event.isLeftClick() && item.getSellPrice() > 0) {
+                                if (item.isInStock()) {
+                                    player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                    new BuyItemGUI(getResident(), getShop(), item).open(player);
+                                } else {
+                                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                                }
+                            } else if (event.isLeftClick() && item.getBuyPrice() > 0) {
+                                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                new SellItemGUI(getResident(), getShop(), item);
+                            }
+
                         }
 
                     }
@@ -187,7 +204,7 @@ public class ShopGUI extends GUI {
 
         if (getResident() != null && getResident().getUuid().equals(shop.getCreator().getUuid())){
             inv.setItem(3, new ItemBuilder(Material.NAME_TAG).withCustomName("§a§l+ §aNew Shop Item").build());
-            inv.setItem(5, new ItemBuilder(Material.TNT).withCustomName("§a§lX §cDestroy Shop").build());
+            inv.setItem(5, new ItemBuilder(Material.TNT).withCustomName("§c§lX §cDestroy Shop").build());
         }
 
     }

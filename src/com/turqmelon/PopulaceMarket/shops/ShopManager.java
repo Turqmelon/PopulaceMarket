@@ -2,6 +2,7 @@ package com.turqmelon.PopulaceMarket.shops;
 
 
 import com.turqmelon.Populace.Resident.Resident;
+import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,19 @@ public class ShopManager {
 
     public static List<Shop> getShops(Resident resident){
         return getShops().stream().filter(shop -> shop.getCreator().getUuid().equals(resident.getUuid())).collect(Collectors.toList());
+    }
+
+    public static Shop getShop(Location location) {
+        for (Shop shop : getShops()) {
+            Location l = shop.getLocation();
+            if (l.getWorld().getName().equals(location.getWorld().getName()) &&
+                    l.getBlockX() == location.getBlockX() &&
+                    l.getBlockY() == location.getBlockY() &&
+                    l.getBlockZ() == location.getBlockZ()) {
+                return shop;
+            }
+        }
+        return null;
     }
 
     public static Shop getShop(UUID uuid){

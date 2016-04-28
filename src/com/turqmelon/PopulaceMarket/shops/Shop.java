@@ -8,6 +8,7 @@ import com.turqmelon.Populace.Plot.PlotManager;
 import com.turqmelon.Populace.Resident.Resident;
 import com.turqmelon.Populace.Resident.ResidentManager;
 import com.turqmelon.Populace.Town.Town;
+import com.turqmelon.Populace.Utils.ItemBuilder;
 import com.turqmelon.PopulaceMarket.gui.ShopGUI;
 import net.minecraft.server.v1_8_R3.MojangsonParseException;
 import org.bukkit.*;
@@ -15,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -99,6 +101,8 @@ public class Shop {
         getLocation().getBlock().setType(Material.AIR);
         getLocation().getWorld().playEffect(getLocation(), Effect.EXPLOSION_HUGE, 1, 1);
         getLocation().getWorld().playSound(getLocation(), Sound.EXPLODE, 1, 0);
+        getLocation().getWorld().dropItemNaturally(getLocation(), new ItemBuilder(Material.ENDER_CHEST)
+                .withCustomName("§e§lShop Chest").withLore(Arrays.asList("§7Place in a §bMerchant Plot§7.")).build());
 
         ShopManager.getShops().remove(this);
         return true;

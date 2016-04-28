@@ -37,7 +37,7 @@ public class ShopItem {
         this.sellPrice = (double) prices.get("sell");
     }
 
-    public Map<ShopCalculationType, Double> calculatePrice(Town town, double price) {
+    public static Map<ShopCalculationType, Double> calculatePrice(Town town, double price) {
         Map<ShopCalculationType, Double> data = new HashMap<>();
         if (town.getSalesTax() == 0 || price == 0) {
             data.put(ShopCalculationType.TOWN_PROFIT, 0.0);
@@ -111,21 +111,21 @@ public class ShopItem {
             lore.add("§7");
         }
 
-        if (viewer != null && viewer.getUuid().equals(shop.getCreator().getUuid())){
-            lore.add("§aLeft Click§f to edit stock.");
-            lore.add("§aRight Click§f to edit pricing.");
-            lore.add("§cShift Right Click§f to remove item.");
-        }
-        else{
-            if (buyPrice > 0 && sellPrice > 0){
-                lore.add("§aLeft Click§f to buy from shop.");
-                lore.add("§aRight Click§f to sell to shop.");
-            }
-            else if (buyPrice > 0 && sellPrice == 0){
-                lore.add("§aLeft Click§f to sell to shop.");
+        if (viewer != null) {
+            if (viewer.getUuid().equals(shop.getCreator().getUuid())) {
+                lore.add("§aLeft Click§f to edit stock.");
+                lore.add("§aRight Click§f to edit pricing.");
+                lore.add("§cShift Right Click§f to remove item.");
             }
             else{
-                lore.add("§aLeft Click§f to buy from shop.");
+                if (buyPrice > 0 && sellPrice > 0) {
+                    lore.add("§aLeft Click§f to buy from shop.");
+                    lore.add("§aRight Click§f to sell to shop.");
+                } else if (buyPrice > 0 && sellPrice == 0) {
+                    lore.add("§aLeft Click§f to sell to shop.");
+                } else {
+                    lore.add("§aLeft Click§f to buy from shop.");
+                }
             }
         }
 
