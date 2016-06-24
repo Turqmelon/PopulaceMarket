@@ -35,7 +35,7 @@ public class EditStockGUI extends ShopGUI {
         int raw = event.getRawSlot();
 
         if (raw == 0){
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
             getShop().getGUI(getResident()).open(player);
         }
         else if (raw == 22){
@@ -49,13 +49,13 @@ public class EditStockGUI extends ShopGUI {
                     getItem().setStock(-1);
                     player.sendMessage(Msg.OK + "Item is now infinite.");
                 }
-                player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                 repopulate();
             }
             else{
 
                 if (getItem().isInfinite()){
-                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                     player.sendMessage(Msg.ERR + "You can't pull items from an infinite pool!");
                     return;
                 }
@@ -87,12 +87,12 @@ public class EditStockGUI extends ShopGUI {
                         player.getWorld().dropItemNaturally(player.getLocation(), item);
                         player.sendMessage(Msg.WARN + "Item was dropped on the ground due to a full inventory.");
                     }
-                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                     repopulate();
 
                 }
                 else{
-                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                     player.sendMessage(Msg.ERR + "You can't pull out " + pullout + " when the stock is " + getItem().getStock() + "!");
                 }
 
@@ -109,13 +109,13 @@ public class EditStockGUI extends ShopGUI {
                     getItem().setStock(getItem().getStock()+cursor.getAmount());
                     event.setCursor(null);
                     player.updateInventory();
-                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                     repopulate();
                     player.sendMessage(Msg.OK + "Added item to the stock!");
 
                 }
                 else{
-                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                     player.sendMessage(Msg.ERR + "Held item doesn't match what's in the shop.");
                 }
 

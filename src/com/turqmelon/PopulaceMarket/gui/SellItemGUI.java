@@ -73,7 +73,7 @@ public class SellItemGUI extends ShopGUI {
                 setSelling(0);
             }
             getShop().getGUI(getResident()).open(player);
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         } else if (raw == 8 && getSelling() > 0) {
 
             double profit = getSelling() * getItem().getBuyPrice();
@@ -85,7 +85,7 @@ public class SellItemGUI extends ShopGUI {
                 double town = revenue.get(ShopItem.ShopCalculationType.TOWN_PROFIT);
                 profit = revenue.get(ShopItem.ShopCalculationType.NEW_PRICE);
                 if (account != null && account.deposit(Populace.getCurrency(), profit)) {
-                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                     getItem().setStock(getItem().getStock() + getSelling());
                     if (town > 0) {
                         getShop().getTown().setBank(getShop().getTown().getBank() + town);
@@ -103,7 +103,7 @@ public class SellItemGUI extends ShopGUI {
                 }
 
             } else {
-                player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                 player.sendMessage(Msg.ERR + "Merchant doesn't have enough " + Populace.getCurrency().getPlural() + ".");
             }
         } else if (raw >= 18 && raw <= 53) {
@@ -117,16 +117,16 @@ public class SellItemGUI extends ShopGUI {
                     player.getWorld().dropItemNaturally(player.getLocation(), getItem().getItem());
                 }
                 repopulate();
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
             } else if (cursor != null && cursor.getType() != Material.AIR) {
                 int amt = cursor.getAmount();
                 if (getItem().matches(event.getCursor())) {
                     setSelling(getSelling() + amt);
                     event.setCursor(null);
                     repopulate();
-                    player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                    player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 } else {
-                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                 }
             }
 

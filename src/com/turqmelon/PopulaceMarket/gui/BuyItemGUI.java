@@ -54,7 +54,7 @@ public class BuyItemGUI extends ShopGUI {
 
         if (raw == 0) {
             getShop().getGUI(getResident()).open(player);
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         } else if (raw == 8) {
             if (event.isShiftClick()) {
                 int newBuying = getBuying();
@@ -70,7 +70,7 @@ public class BuyItemGUI extends ShopGUI {
                     newBuying = 1;
                 }
                 if (newBuying != getBuying()) {
-                    player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                    player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                     setBuying(newBuying);
                     repopulate();
                 }
@@ -83,7 +83,7 @@ public class BuyItemGUI extends ShopGUI {
                     if (account != null && account.withdraw(Populace.getCurrency(), price)) {
 
                         player.closeInventory();
-                        player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 
                         if (!getItem().isInfinite()) {
                             getItem().setStock(getItem().getStock() - getBuying());
@@ -109,11 +109,11 @@ public class BuyItemGUI extends ShopGUI {
                         getShop().getCreator().sendMessage(Msg.INFO + "You sold " + getBuying() + "x " + ItemUtil.getItemName(getItem().getItem()) + " for " + Populace.getCurrency().format(price) + "!");
                         player.sendMessage(Msg.OK + "You bought " + getBuying() + "x " + ItemUtil.getItemName(getItem().getItem()) + " for " + Populace.getCurrency().format(price) + ".");
                     } else {
-                        player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                         player.sendMessage(Msg.ERR + "You don't have enough " + Populace.getCurrency().getPlural() + ".");
                     }
                 } else {
-                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                     player.sendMessage(Msg.ERR + "Out of stock.");
                 }
 

@@ -4,7 +4,7 @@ import com.turqmelon.Populace.Utils.ItemBuilder;
 import com.turqmelon.PopulaceMarket.Listeners.BlockListener;
 import com.turqmelon.PopulaceMarket.shops.Shop;
 import com.turqmelon.PopulaceMarket.shops.ShopManager;
-import net.minecraft.server.v1_8_R3.MojangsonParseException;
+import net.minecraft.server.v1_9_R2.MojangsonParseException;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapelessRecipe;
@@ -85,6 +85,10 @@ public class PopulaceMarket extends JavaPlugin {
 
     }
 
+    public static PopulaceMarket getInstance() {
+        return instance;
+    }
+
     @Override
     public void onDisable() {
         try {
@@ -125,9 +129,5 @@ public class PopulaceMarket extends JavaPlugin {
             }
         }.runTaskTimerAsynchronously(this, TimeUnit.MINUTES.toMillis(10), TimeUnit.MINUTES.toMillis(10));
 
-    }
-
-    public static PopulaceMarket getInstance() {
-        return instance;
     }
 }

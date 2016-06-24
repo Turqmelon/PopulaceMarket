@@ -5,8 +5,8 @@ import com.turqmelon.Populace.Populace;
 import com.turqmelon.Populace.Resident.Resident;
 import com.turqmelon.Populace.Town.Town;
 import com.turqmelon.Populace.Utils.ItemUtil;
-import net.minecraft.server.v1_8_R3.MojangsonParseException;
-import net.minecraft.server.v1_8_R3.NBTTagString;
+import net.minecraft.server.v1_9_R2.MojangsonParseException;
+import net.minecraft.server.v1_9_R2.NBTTagString;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.json.simple.JSONObject;
@@ -165,20 +165,6 @@ public class ShopItem {
         return stock == -1;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public void setBuyPrice(double buyPrice) {
-        if (buyPrice < 0)buyPrice = 0;
-        this.buyPrice = buyPrice;
-    }
-
-    public void setSellPrice(double sellPrice) {
-        if (sellPrice < 0)sellPrice  = 0;
-        this.sellPrice = sellPrice;
-    }
-
     public ItemStack getItem() {
         return ItemUtil.deepCopy(item);
     }
@@ -187,15 +173,29 @@ public class ShopItem {
         return stock;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public double getBuyPrice() {
         return buyPrice;
+    }
+
+    public void setBuyPrice(double buyPrice) {
+        if (buyPrice < 0) buyPrice = 0;
+        this.buyPrice = buyPrice;
     }
 
     public double getSellPrice() {
         return sellPrice;
     }
 
-    public static enum ShopCalculationType {
+    public void setSellPrice(double sellPrice) {
+        if (sellPrice < 0) sellPrice = 0;
+        this.sellPrice = sellPrice;
+    }
+
+    public enum ShopCalculationType {
         NEW_PRICE, TOWN_PROFIT
     }
 

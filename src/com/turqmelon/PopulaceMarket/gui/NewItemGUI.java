@@ -63,18 +63,18 @@ public class NewItemGUI extends ShopGUI {
                 setItemToBeSold(null);
             }
             getShop().getGUI(getResident()).open(player);
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         } else if (raw == 13) {
             if (getItemToBeSold() != null) {
                 player.getWorld().dropItemNaturally(player.getLocation(), getItemToBeSold());
                 setItemToBeSold(null);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             } else if (event.getCursor() != null && event.getCursor().getType() != Material.AIR) {
                 ItemStack cursor = event.getCursor();
                 setItemToBeSold(cursor);
                 event.setCursor(null);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             }
         } else if (raw == 31) {
@@ -89,7 +89,7 @@ public class NewItemGUI extends ShopGUI {
             }
             if (newAmount != getPrice()) {
                 setPrice(newAmount);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             }
         } else if (raw == 32) {
@@ -104,7 +104,7 @@ public class NewItemGUI extends ShopGUI {
             }
             if (newAmount != getPrice()) {
                 setPrice(newAmount);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             }
         } else if (raw == 33) {
@@ -119,7 +119,7 @@ public class NewItemGUI extends ShopGUI {
             }
             if (newAmount != getPrice()) {
                 setPrice(newAmount);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             }
         } else if (raw == 34) {
@@ -134,7 +134,7 @@ public class NewItemGUI extends ShopGUI {
             }
             if (newAmount != getPrice()) {
                 setPrice(newAmount);
-                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                 repopulate();
             }
         } else if ((raw == 48 || raw == 49 || raw == 50) && getItemToBeSold() != null && getPrice() > 0) {
@@ -149,7 +149,7 @@ public class NewItemGUI extends ShopGUI {
             getShop().getItems().add(item);
             setItemToBeSold(null);
             getShop().getGUI(getResident()).open(player);
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         }
 
     }

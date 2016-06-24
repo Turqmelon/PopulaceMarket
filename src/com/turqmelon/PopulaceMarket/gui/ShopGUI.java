@@ -8,7 +8,7 @@ import com.turqmelon.Populace.Utils.ItemUtil;
 import com.turqmelon.Populace.Utils.Msg;
 import com.turqmelon.PopulaceMarket.shops.Shop;
 import com.turqmelon.PopulaceMarket.shops.ShopItem;
-import net.minecraft.server.v1_8_R3.NBTTagString;
+import net.minecraft.server.v1_9_R2.NBTTagString;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -68,17 +68,17 @@ public class ShopGUI extends GUI {
 
         if (raw == 45 && getPage() > 1){
             this.page = page-1;
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
             repopulate();
         }
         else if (raw == 53 && event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.AIR){
             this.page = page+1;
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
             repopulate();
         }
         else if (raw == 3 && owner){
             new NewItemGUI(getResident(), getShop()).open(player);
-            player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         }
         else if (raw == 5 && owner){
             if (getShop().destroy(false)){
@@ -86,7 +86,7 @@ public class ShopGUI extends GUI {
                 player.sendMessage(Msg.OK + "Shop destroyed!");
             }
             else{
-                player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                 player.closeInventory();
                 player.sendMessage(Msg.ERR + "To destroy your shop, you must first remove all the items from it.");
             }
@@ -103,35 +103,35 @@ public class ShopGUI extends GUI {
                         if (owner){
                             if (event.isShiftClick()){
                                 if (item.remove(getShop(), false)){
-                                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                                     repopulate();
                                 }
                                 else{
-                                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                                     player.sendMessage(Msg.ERR + "You must empty the stock before removing an item.");
                                 }
                             }
                             else if (event.isRightClick()){
-                                player.playSound(player.getLocation(), Sound.CLICK ,1, 1);
+                                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                                 new EditPricingGUI(getResident(), getShop(), item).open(player);
                             }
                             else{
-                                player.playSound(player.getLocation(), Sound.CLICK ,1, 1);
+                                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                                 new EditStockGUI(getResident(), getShop(), item).open(player);
                             }
                         } else {
                             if (event.isRightClick() && item.getBuyPrice() > 0) {
-                                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                                 new SellItemGUI(getResident(), getShop(), item).open(player);
                             } else if (event.isLeftClick() && item.getSellPrice() > 0) {
                                 if (item.isInStock()) {
-                                    player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                    player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                                     new BuyItemGUI(getResident(), getShop(), item).open(player);
                                 } else {
-                                    player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 0);
+                                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BASS, 1, 0);
                                 }
                             } else if (event.isLeftClick() && item.getBuyPrice() > 0) {
-                                player.playSound(player.getLocation(), Sound.CLICK, 1, 1);
+                                player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
                                 new SellItemGUI(getResident(), getShop(), item);
                             }
 

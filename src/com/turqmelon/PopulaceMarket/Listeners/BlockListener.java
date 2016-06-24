@@ -92,7 +92,7 @@ public class BlockListener implements Listener {
                 } else {
                     if (plot.can(resident, PermissionSet.SHOP)) {
                         shop.getGUI(resident).open(player);
-                        player.playSound(player.getLocation(), Sound.CHEST_OPEN, 1, 0);
+                        player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 0);
                     } else {
                         player.sendMessage(Msg.ERR + "You can't open shops here.");
                     }
@@ -125,7 +125,7 @@ public class BlockListener implements Listener {
 
                                     event.setCancelled(false);
                                     ShopManager.getShops().add(new Shop(UUID.randomUUID(), player.getName() + "'s Shop", account, resident, block.getLocation()));
-                                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                                     player.sendMessage(Msg.OK + "Shop created!");
 
                                 } else {
