@@ -1,6 +1,8 @@
 # PopulaceMarket
 Market and shop add-on for [Populace](https://github.com/turqmelon/Populace).
 
+**This project is not maintained.** It was made for an experiment about 3 years ago.
+
 ## Features
 * Enables **Sales Tax** tracking for Populace towns
 * Enables a new plot type **SHOP**
